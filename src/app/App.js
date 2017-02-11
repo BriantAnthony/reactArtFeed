@@ -1,21 +1,48 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
-import './App.css';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { Router, Route, browserHistory } from 'react-router';
+import { routerReducer } from 'react-router-redux';
+import userReducer from '../user/userReducer';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import Header from '../common/Header';
+import Body from '../common/Body';
+
+const loggerMiddleware = createLogger();
+injectTapEventPlugin(); //required by MaterialUI for click/tap events
+
+const store = createStore(
+  userReducer,
+  applyMiddleware(
+    loggerMiddleware,
+    thunkMiddleware
+  ));
+
+const styles = {
+  body: {
+    marginTop: 0,
   }
 }
 
-export default App;
+class Main extends Component {
+  render(){
+    return (
+      <MuiThemeProvider>
+        <Provider store={store}>
+          <div style={styles.body}>
+            <Header />
+            <Router history={browserHistory}>
+              <Route path="/" component={Body} />
+            </Router>
+          </div>
+        </Provider>
+      </MuiThemeProvider>
+    );
+  }
+} 
+
+export default Main;

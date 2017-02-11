@@ -14,6 +14,13 @@
   color: white;
 }
 
+.header {
+  width: 100%;
+  height: 20px;
+  background-color: #999;
+  color: #FFF;
+}
+
 .App-intro {
   font-size: large;
 }
