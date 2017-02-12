@@ -4,44 +4,21 @@ import {
   LOGIN_FAIL,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  TEST
+  REGISTER_FAIL
 } from './actionConstants';
-import fetch from 'isomorphic-fetch';
-const host = 'http://ec2-52-23-165-85.compute-1.amazonaws.com:4250/api/'
-
-export function test(payload){
-  return {
-    type: TEST,
-    payload,
-    mockUser: {
-      name: 'Briant Anthony',
-      age: 28,
-      mediums: ['Digital', 'Paper', 'Paint', 'Photography'],
-      niche: 'Photography'
-    }
-  }
-}
+import Api from '../config/apiWrapper';
 
 // Thunk Action Creator
 export function userLoginThunk(payload){
   return function(dispatch){
     dispatch(loginRequest(payload))
-    return fetch(`${host}login`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload)
-    })
+    return Api.login(payload)
       .then(response => response.json())
       .then(json => {
-        console.log('server response: ', json);
+        //console.log('server response: ', json);
         dispatch(loginSuccess(json))
       });
   }
-
 }
 
 export function loginRequest(payload){

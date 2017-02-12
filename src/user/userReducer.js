@@ -7,7 +7,6 @@ import {
   REGISTER_FAIL,
   TEST
 } from './actionConstants';
-//import { authCheck } from './helper';
 
 const initialState = {
   isAuthenticated: false,

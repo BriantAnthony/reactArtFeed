@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { test } from '../user/UserActions';
 import CardWithAvatar from './Card';
 const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi."
          
@@ -9,9 +8,6 @@ class Body extends Component {
     super(props);
   
     this.state = {};
-  }
-  componentDidMount(){
-    //this.props.dispatch(test({email: 'bc@m.com', password: '123'}));
   }
 
   render() {
@@ -38,7 +34,7 @@ class Body extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('newState: ', state)
+  //console.log('newState: ', state)
   return {
     user: state.user
   }

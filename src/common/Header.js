@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { test, userLoginThunk } from '../user/UserActions';
+import { userLoginThunk } from '../user/UserActions';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -32,7 +32,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state: ', state);
+  //console.log('state: ', state);
   return {
     user : state.user,
     message: state.message,

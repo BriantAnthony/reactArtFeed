@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "localforage": "^1.4.3",
     "react-scripts": "0.9.0",
     "react-tap-event-plugin": "^2.0.1",
     "redux-devtools": "^3.3.2"
@@ -17,6 +18,7 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.1",
+    "redux-persist": "^4.3.0",
     "redux-thunk": "^1.0.3"
   },
   "scripts": {
