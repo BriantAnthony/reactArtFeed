@@ -8,6 +8,22 @@ import {
 } from './actionConstants';
 import Api from '../config/apiWrapper';
 
+// Thunk Action Creator
+export function randomCardThunk(){
+  return function(dispatch){
+    dispatch(randomRequest())
+    return Api.randomCard()
+      .then(response => response.json())
+      .then(json => {
+        dispatch(randomSuccess(json))
+      })
+      .catch((err) => {
+        Promise.reject(err);
+        dispatch(randomFail(err))
+      });
+  }
+}
+
 // Fetch Random Card
 export function randomRequest(){
   return {

@@ -11,7 +11,6 @@ const initialState = {
   isAuthenticated: false,
   isFetching: false,
   user: {},
-  token: null,
   lastLogin: null,
   errors: {},
 };
@@ -28,7 +27,6 @@ function userReducer(state = initialState, action){
         isFetching: false,
         user: action.user,
         isAuthenticated: true,
-        token: action.token,
         lastLogin: action.receivedAt
       });
     case LOGIN_FAIL:

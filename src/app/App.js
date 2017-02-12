@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import {persistStore, autoRehydrate} from 'redux-persist';
 import { Router, Route, browserHistory } from 'react-router';
-import userReducer from '../user/userReducer';
+import rootReducer from './rootReducer';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -16,7 +16,7 @@ const loggerMiddleware = createLogger();
 injectTapEventPlugin(); //required by MaterialUI for click/tap events
 
 export const store = createStore(
-  userReducer,
+  rootReducer,
   undefined,
   compose(
     applyMiddleware(

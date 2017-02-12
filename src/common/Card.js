@@ -11,7 +11,6 @@ import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
   defaultImg: {
-    height: 337,
     width: 600,
     backgroundColor: '#999'
   },
@@ -68,7 +67,7 @@ export class CardWithAvatar extends Component {
             role="presentation" 
           />
         </CardMedia>
-        <CardTitle title={props.artworkTitle} subtitle={props.artworkYear} />
+        <CardTitle title={props.artworkTitle} subtitle={props.genre} />
         <CardText>
           {props.artworkDescription}
         </CardText>

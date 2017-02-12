@@ -9,10 +9,11 @@ const verbs = {
   PUT: 'PUT',
   DELETE: 'DELETE'
 };
-
 const getToken = () => {
   if(window.localStorage){
-    return window.localStorage.getItem('reduxPersist:token')
+    return window.localStorage.getItem('token');
+  } else {
+    return false
   }
 }
 

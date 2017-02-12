@@ -47,7 +47,7 @@ function cardReducer(state = initialState, action){
     case LIKE_FAIL:
       return Object.assign({}, state, {
         isFetching: false,
-        errors: actions.message
+        errors: action.message
       });
     default:
       return state;

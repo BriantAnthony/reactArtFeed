@@ -17,8 +17,10 @@ export function userLoginThunk(payload){
       .then(json => {
         //console.log('server response: ', json);
         dispatch(loginSuccess(json))
+        window.localStorage.setItem('token', json.token);
       })
       .catch((err) => {
+        dispatch(loginFail(err));
         Promise.reject(err);
       });
   }
@@ -36,7 +38,6 @@ export function loginSuccess(response){
     type: LOGIN_SUCCESS,
     response,
     user: response.data,
-    token: response.token,
     receivedAt: Date.now()
   }
 }
