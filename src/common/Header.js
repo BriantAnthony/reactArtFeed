@@ -7,24 +7,26 @@ import FlatButton from 'material-ui/FlatButton';
 class Header extends Component {
 
   handleTouchTap() {
-    //alert('onTouchTap triggered on the title component');
-    //this.props.dispatch(test({email: 'bc@m.com', password: '123'}));
-    this.props.dispatch(userLoginThunk({email: 'briantacampbell@gmail.com', password: 'demo'}));
+    if(!this.props.isAuthenticated){
+      this.props.dispatch(userLoginThunk({email: 'briantacampbell@gmail.com', password: 'demo'}));
+    } else {
+      // Open Menu
+    }
   }
 
   render() {
     //console.log('props: ', this.props);
-    const testLabel = () => {
-      if(this.props.test){
-        return 'TESTED'
+    const authLabel = () => {
+      if(this.props.isAuthenticated){
+        return this.props.user.name
       } else {
-        return 'UNTESTED'
+        return 'LOGIN'
       }
     }
     return (
       <AppBar 
         title="Mini Art Feed"
-        iconElementRight={<FlatButton label={testLabel()} />}
+        iconElementRight={<FlatButton label={authLabel()} />}
         onRightIconButtonTouchTap={this.handleTouchTap.bind(this)}
       />
     );
@@ -35,8 +37,7 @@ const mapStateToProps = (state) => {
   //console.log('state: ', state);
   return {
     user : state.user,
-    message: state.message,
-    test: state.tested
+    isAuthenticated: state.isAuthenticated
   }
 };
 

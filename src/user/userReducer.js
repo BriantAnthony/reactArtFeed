@@ -4,8 +4,7 @@ import {
   LOGIN_FAIL,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  TEST
+  REGISTER_FAIL
 } from './actionConstants';
 
 const initialState = {
@@ -15,19 +14,10 @@ const initialState = {
   token: null,
   lastLogin: null,
   errors: {},
-  tested: false,
-  message: null
 };
 
 function userReducer(state = initialState, action){
   switch(action.type) {
-    case TEST:
-      return {
-        ...state,
-        tested: true,
-        message: 'Congrats',
-        user: action.mockUser
-      };
     // Login
     case LOGIN_REQUEST:
       return Object.assign({}, state, {

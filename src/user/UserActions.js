@@ -17,6 +17,9 @@ export function userLoginThunk(payload){
       .then(json => {
         //console.log('server response: ', json);
         dispatch(loginSuccess(json))
+      })
+      .catch((err) => {
+        Promise.reject(err);
       });
   }
 }

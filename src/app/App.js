@@ -4,7 +4,6 @@ import createLogger from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import {persistStore, autoRehydrate} from 'redux-persist';
-import localforage from 'localforage';
 import { Router, Route, browserHistory } from 'react-router';
 import userReducer from '../user/userReducer';
 
@@ -28,7 +27,7 @@ export const store = createStore(
   ));
 
 // Persists redux-store
-persistStore(store, {storage: localforage});
+persistStore(store);
 
 const styles = {
   body: {

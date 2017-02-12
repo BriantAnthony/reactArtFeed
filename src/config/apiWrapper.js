@@ -1,4 +1,4 @@
-import localforage from 'localforage';
+//import localforage from 'localforage';
 import fetch from 'isomorphic-fetch';
 
 const host = 'http://ec2-52-23-165-85.compute-1.amazonaws.com:4250/api';
@@ -10,16 +10,12 @@ const verbs = {
   DELETE: 'DELETE'
 };
 
-// returns persisted token for authenticated requests
 const getToken = () => {
-  localforage.getItem('reduxPersist:token').then((value) => {
-    //console.log(value);
-    return value;
-  }).catch((err) => {
-      // This code runs if there were any errors
-      console.log(err);
-  });
+  if(window.localStorage){
+    return window.localStorage.getItem('reduxPersist:token')
+  }
 }
+
 
 const request = (url, verb, payload) => {
   const options = {
