@@ -9,6 +9,7 @@ const verbs = {
   PUT: 'PUT',
   DELETE: 'DELETE'
 };
+
 const getToken = () => {
   if(window.localStorage){
     return window.localStorage.getItem('token');

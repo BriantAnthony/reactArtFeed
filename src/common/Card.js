@@ -8,9 +8,15 @@ import {
   CardText
 } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import Spinner from 'react-spinner';
 
 const styles = {
   defaultImg: {
+    width: 600,
+    height: 337,
+    backgroundColor: 'transparent'
+  },
+  fetchedImg: {
     width: 600,
     backgroundColor: '#999'
   },
@@ -53,7 +59,7 @@ export class CardWithAvatar extends Component {
     const props = this.props;
     //const mediums = this.artMapper(this.props.artistMediums)
 
-    return (
+    return !props.isFetching ? (
       <Card>
         <CardHeader
           title={props.artistName}
@@ -62,8 +68,8 @@ export class CardWithAvatar extends Component {
         />
         <CardMedia>
           <img 
-            style={styles.defaultImg} 
-            src={props.artworkImg}
+            style={styles.fetchedImg} 
+            src={props.artworkImg} 
             role="presentation" 
           />
         </CardMedia>
@@ -76,12 +82,17 @@ export class CardWithAvatar extends Component {
           <FlatButton label={props.actionLabel2} onTouchTap={props.action2} />
         </CardActions>
       </Card>
-    );  
+    ) : (
+      <div style={styles.defaultImg}>
+        <Spinner />
+      </div>
+    ) 
   }
 }
 
 CardWithAvatar.propTypes = {
-  action1: React.PropTypes.func.isRequired
+  action1: React.PropTypes.func.isRequired,
+  isFetching: React.PropTypes.bool.isRequired
 }
 
 export default CardWithAvatar;

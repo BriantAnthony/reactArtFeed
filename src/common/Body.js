@@ -24,7 +24,7 @@ class Body extends Component {
   render() {
     const props = this.props;
     //console.log('props: ', this.props);
-    const {art, user} = props;
+    const {art, user, isFetching} = props;
     return this.props.isAuthenticated ? (
       <div className="container">
         <CardWithAvatar 
@@ -39,6 +39,7 @@ class Body extends Component {
           artworkTitle={art.title}
           genre={art.genre}
           artworkDescription={description}
+          isFetching={isFetching}
         />
       </div>
     ) : (
@@ -54,7 +55,8 @@ const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.app.isAuthenticated,
     user: state.app.user,
-    art: state.artCard.data
+    art: state.artCard.data,
+    isFetching: state.artCard.isFetching
   }
 }
 

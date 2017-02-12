@@ -1,8 +1,14 @@
 @import url('./app/App.css');
+@import url('../node_modules/react-spinner/react-spinner.css');
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background-color: #e7e7e7;
+}
+
+/* Overrides default spinner color in node_module*/
+.react-spinner_bar {
+  background-color: black !important;
 }
