@@ -18,6 +18,7 @@ it('renders without crashing', () => {
         artworkTitle="Harvey, the Harvestor"
         artworkYear="2017"
         artworkDescription="This is good art."
+        isFetching={false}
       />
     </MuiThemeProvider>
   ).toJSON();

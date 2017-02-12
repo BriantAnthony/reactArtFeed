@@ -1,12 +1,12 @@
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import userReducer from '../../user/userReducer';
+import rootReducer from '../../app/rootReducer';
 import Header from '../Header';
 import renderer from 'react-test-renderer';
 
 jest.mock('material-ui/AppBar', () => 'AppBar');
-const store = createStore(userReducer);
+const store = createStore(rootReducer);
 
 it('renders without crashing', () => {
   const tree = renderer.create(

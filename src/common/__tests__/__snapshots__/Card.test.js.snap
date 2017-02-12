@@ -105,7 +105,6 @@ exports[`test renders without crashing 1`] = `
           style={
             Object {
               "backgroundColor": "#999",
-              "height": 337,
               "maxWidth": "100%",
               "minWidth": "100%",
               "muiPrepared": true,
@@ -144,9 +143,7 @@ exports[`test renders without crashing 1`] = `
             "fontSize": 14,
             "muiPrepared": true,
           }
-        }>
-        2017
-      </span>
+        } />
     </div>
     <div
       style={
