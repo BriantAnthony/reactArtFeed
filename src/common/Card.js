@@ -26,7 +26,7 @@ const styles = {
   }
 }
 
-class CardWithAvatar extends Component {
+export class CardWithAvatar extends Component {
   constructor(props) {
     super(props);
     this.state = {};

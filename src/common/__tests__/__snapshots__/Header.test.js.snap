@@ -1,0 +1,18 @@
+exports[`test renders without crashing 1`] = `
+<AppBar
+  iconElementRight={
+    <FlatButton
+      disabled={false}
+      label="LOGIN"
+      labelPosition="after"
+      labelStyle={Object {}}
+      onKeyboardFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchStart={[Function]}
+      primary={false}
+      secondary={false} />
+  }
+  onRightIconButtonTouchTap={[Function]}
+  title="Mini Art Feed" />
+`;
