@@ -16,7 +16,6 @@ const getToken = () => {
   }
 }
 
-
 const request = (url, verb, payload) => {
   const options = {
     method: verb,
@@ -39,6 +38,10 @@ const Api = {
     const url = host + '/login';
     return request(url, verbs.POST, payload);
   },
+  randomCard: () => {
+    const url = host + '/artwork/randomized';
+    return request(url, verbs.GET);
+  }
 }
 
 export default Api;

@@ -45,7 +45,7 @@ export function loginFail(response){
   return {
     type: LOGIN_FAIL,
     response,
-    errors: response.errors
+    errors: response.message
   }
 }
 
