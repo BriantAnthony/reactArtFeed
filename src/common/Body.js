@@ -40,6 +40,8 @@ class Body extends Component {
           genre={art.genre}
           artworkDescription={description}
           isFetching={isFetching}
+          likes={art.yVotes}
+          collectors={art.collectedBy}
         />
       </div>
     ) : (

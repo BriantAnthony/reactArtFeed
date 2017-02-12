@@ -19,6 +19,8 @@ it('renders without crashing', () => {
         artworkYear="2017"
         artworkDescription="This is good art."
         isFetching={false}
+        genre="Still Life"
+        likes={888}
       />
     </MuiThemeProvider>
   ).toJSON();

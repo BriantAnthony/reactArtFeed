@@ -104,12 +104,11 @@ exports[`test renders without crashing 1`] = `
           src="http://i0.wp.com/inherit.eu/wp-content/uploads/2016/10/nature-forest-moss-leaves-e1476955210166.jpg?resize=600%2C337"
           style={
             Object {
-              "backgroundColor": "#999",
               "maxWidth": "100%",
               "minWidth": "100%",
               "muiPrepared": true,
               "verticalAlign": "top",
-              "width": 600,
+              "width": "100%",
             }
           } />
       </div>
@@ -143,7 +142,9 @@ exports[`test renders without crashing 1`] = `
             "fontSize": 14,
             "muiPrepared": true,
           }
-        } />
+        }>
+        Still Life | 888 likes
+      </span>
     </div>
     <div
       style={
@@ -154,7 +155,10 @@ exports[`test renders without crashing 1`] = `
           "padding": 16,
         }
       }>
-      This is good art.
+      <strong>
+        Collected By:
+      </strong>
+      <span />
     </div>
     <div
       style={

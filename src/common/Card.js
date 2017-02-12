@@ -11,12 +11,12 @@ import FlatButton from 'material-ui/FlatButton';
 import Spinner from 'react-spinner';
 
 const styles = {
-  defaultImg: {
+  isFetching: {
     width: 600,
     height: 337,
     backgroundColor: 'transparent'
   },
-  fetchedImg: {
+  defaultImg: {
     width: 600,
     backgroundColor: '#999'
   },
@@ -47,7 +47,7 @@ export class CardWithAvatar extends Component {
             <li 
               style={styles.horizontalList} 
               key={index}>
-              {index === array.length-1 ? `${item}` : `${item},`}
+              {index === array.length-1 ? `${item.name}` : `${item.name},`}
             </li>
           ))}
         </ul>
@@ -57,7 +57,7 @@ export class CardWithAvatar extends Component {
 
   render(){
     const props = this.props;
-    //const mediums = this.artMapper(this.props.artistMediums)
+    const collectors = this.artMapper(this.props.collectors)
 
     return !props.isFetching ? (
       <Card>
@@ -73,9 +73,10 @@ export class CardWithAvatar extends Component {
             role="presentation" 
           />
         </CardMedia>
-        <CardTitle title={props.artworkTitle} subtitle={props.genre} />
+        <CardTitle title={props.artworkTitle} subtitle={`${props.genre} | ${props.likes} likes`} />
         <CardText>
-          {props.artworkDescription}
+          <strong>Collected By:</strong> 
+          <span>{collectors}</span>
         </CardText>
         <CardActions>
           <FlatButton label={props.actionLabel1} onTouchTap={props.action1} />
