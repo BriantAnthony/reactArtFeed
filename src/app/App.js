@@ -4,7 +4,6 @@ import createLogger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
-import { routerReducer } from 'react-router-redux';
 import userReducer from '../user/userReducer';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

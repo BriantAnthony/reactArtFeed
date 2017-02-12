@@ -1,88 +1,47 @@
 import React, { Component } from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
-import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 500,
-    height: 450,
-    overflowY: 'auto',
-  },
-};
-
-const tilesData = [
-  {
-    img: 'images/grid-list/00-52-29-429_640.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'images/grid-list/burger-827309_640.jpg',
-    title: 'Tasty burger',
-    author: 'pashminu',
-  },
-  {
-    img: 'images/grid-list/camera-813814_640.jpg',
-    title: 'Camera',
-    author: 'Danson67',
-  },
-  {
-    img: 'images/grid-list/morning-819362_640.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-  {
-    img: 'images/grid-list/hats-829509_640.jpg',
-    title: 'Hats',
-    author: 'Hans',
-  },
-  {
-    img: 'images/grid-list/honey-823614_640.jpg',
-    title: 'Honey',
-    author: 'fancycravel',
-  },
-  {
-    img: 'images/grid-list/vegetables-790022_640.jpg',
-    title: 'Vegetables',
-    author: 'jill111',
-  },
-  {
-    img: 'images/grid-list/water-plant-821293_640.jpg',
-    title: 'Water plant',
-    author: 'BkrmadtyaKarki',
-  },
-];
-
+import { connect } from 'react-redux';
+import { test } from '../user/UserActions';
+import CardWithAvatar from './Card';
+const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi."
+         
 class Body extends Component {
+  constructor(props) {
+    super(props);
+  
+    this.state = {};
+  }
+  componentDidMount(){
+    //this.props.dispatch(test({email: 'bc@m.com', password: '123'}));
+  }
+
   render() {
+    const props = this.props;
+    const {user} = props;
     return (
-      <div>
-        <GridList
-          cellHeight={180}
-          style={styles.gridList}
-        >
-          <Subheader>December</Subheader>
-          {tilesData.map((tile) => (
-            <GridTile
-              key={tile.img}
-              title={tile.title}
-              subtitle={<span>by <b>{tile.author}</b></span>}
-              actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-            >
-              <img src={tile.img} role="presentation" />
-            </GridTile>
-          ))}
-        </GridList>
+      <div className="container">
+        <CardWithAvatar 
+          action1={() => console.log('Like Action!')}
+          actionLabel1="Like"
+          action2={() => console.log('Fetch New Random Image!')}
+          actionLabel2="Random Image"
+          avatar='https://avatars2.githubusercontent.com/u/5712135?v=3&s=460'
+          artworkImg='http://i0.wp.com/inherit.eu/wp-content/uploads/2016/10/nature-forest-moss-leaves-e1476955210166.jpg?resize=600%2C337'
+          artistName={user.name}
+          artistNiche={user.userClass}
+          artworkTitle="Harvey, the Harvestor"
+          artworkYear={2017}
+          artworkDescription={description}
+        />
       </div>
     );
   }
 }
 
-export default Body;
+const mapStateToProps = (state) => {
+  console.log('newState: ', state)
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Body);
