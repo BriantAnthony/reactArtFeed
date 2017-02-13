@@ -18,7 +18,7 @@ const styles = {
   },
   defaultImg: {
     width: 600,
-    backgroundColor: '#999'
+    backgroundColor: 'transparent'
   },
   ul: {
     listStyleType: 'none',
