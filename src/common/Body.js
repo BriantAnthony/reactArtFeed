@@ -21,7 +21,7 @@ class Body extends Component {
     this.props.dispatch(likeThunk(this.props.art._id, {user_id: this.props.user._id}))
   }
 
-  componentMount(){
+  componentDidMount(){
     this.props.dispatch(randomCardThunk());
   }
 
