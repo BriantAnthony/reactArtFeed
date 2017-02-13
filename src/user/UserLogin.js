@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Card, 
   CardActions, 
   CardHeader, 
   CardText
 } from 'material-ui/Card';
+import { connect } from 'react-redux';
+import { userLoginThunk } from '../user/UserActions';
 import TextField from 'material-ui/TextField';
 import {orange500, blue500} from 'material-ui/styles/colors';
+import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
@@ -22,51 +25,72 @@ const styles = {
   floatingLabelFocusStyle: {
     color: blue500,
   },
+  loginForm: {
+    width: 400,
+    padding: 10,
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
 };
 
-const TextFieldExampleCustomize = () => (
+const TextFieldExampleCustomize = (props) => (
   <div>
     <TextField
-      hintText="Styled Hint Text"
-      hintStyle={styles.errorStyle}
-    /><br />
-    <TextField
-      hintText="Custom error color"
-      errorText={false}
-      errorStyle={styles.errorStyle}
-    /><br />
-    <TextField
-      hintText="Custom Underline Color"
-      underlineStyle={styles.underlineStyle}
-    /><br />
-    <TextField
-      hintText="Custom Underline Focus Color"
-      underlineFocusStyle={styles.underlineStyle}
-    /><br />
-    <TextField
-      floatingLabelText="Styled Floating Label Text"
+      defaultValue={props.form.email}
+      hintText="email"
+      floatingLabelText="Email"
       floatingLabelStyle={styles.floatingLabelStyle}
       floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+      fullWidth={true}
+    /><br/>
+    <TextField
+      defaultValue={props.form.password}
+      hintText="Password"
+      floatingLabelText="Password"
+      floatingLabelStyle={styles.floatingLabelStyle}
+      floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+      fullWidth={true}
+      type="password"
     />
   </div>
 );
 
-const Login = () => (
-  <Card>
-    <CardHeader
-      title="Without Avatar"
-      subtitle="Subtitle"
-      actAsExpander={true}
-      showExpandableButton={true}
-    />
-    <CardActions>
-      <FlatButton label="Action1" />
-      <FlatButton label="Action2" />
-    </CardActions>
-    <CardText expandable={true}>
-      <TextFieldExampleCustomize />
-    </CardText>
-  </Card>
-);
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        email: 'briantacampbell@gmail.com',
+        password: 'demo'
+      }
+    };
+    this.userLogin = this.userLogin.bind(this);
+  }
 
-export default Login;
+  userLogin(payload) {
+    if(payload){
+      console.log('payload:', payload);
+      this.props.dispatch(userLoginThunk(payload));
+    }
+  }
+
+  render(){
+    return (
+      <Card style={styles.loginForm}>
+        <CardHeader
+          title="Login"
+          subtitle="Demo Account"
+        />
+        <CardText>
+          <TextFieldExampleCustomize form={this.state.form} />
+        </CardText>
+        <CardActions>
+          <RaisedButton label="Login" primary={true} onTouchTap={() => this.userLogin(this.state.form)} />
+          <FlatButton label="Forgot Password" />
+        </CardActions>
+      </Card>
+    );
+  }
+}
+
+export default connect()(Login);

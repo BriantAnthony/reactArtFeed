@@ -15,7 +15,11 @@ export function randomCardThunk(){
     return Api.randomCard()
       .then(response => response.json())
       .then(json => {
-        dispatch(randomSuccess(json))
+        if(json.message){
+          dispatch(randomFail(json))
+        } else {
+          dispatch(randomSuccess(json))
+        }
       })
       .catch((err) => {
         Promise.reject(err);

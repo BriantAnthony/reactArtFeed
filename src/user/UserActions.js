@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAIL
@@ -47,6 +48,19 @@ export function loginFail(response){
     type: LOGIN_FAIL,
     response,
     errors: response.message
+  }
+}
+
+export function userLogoutThunk(){
+  return function(dispatch){
+    window.localStorage.removeItem('token');
+    dispatch(logout())
+  }
+}
+
+export function logout(){
+  return {
+    type: LOGOUT
   }
 }
 

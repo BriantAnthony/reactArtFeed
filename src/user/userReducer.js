@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAIL
@@ -34,6 +35,10 @@ function userReducer(state = initialState, action){
         isFetching: false,
         errors: action.errors
       });
+    case LOGOUT:
+      return Object.assign({}, state, {
+        isAuthenticated: false
+      })
     // Register
     case REGISTER_REQUEST:
       return Object.assign({}, state, {
