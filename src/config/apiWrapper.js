@@ -1,4 +1,3 @@
-//import localforage from 'localforage';
 import fetch from 'isomorphic-fetch';
 
 const host = 'http://ec2-52-23-165-85.compute-1.amazonaws.com:4250/api';
