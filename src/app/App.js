@@ -20,7 +20,7 @@ export const store = createStore(
   undefined,
   compose(
     applyMiddleware(
-    loggerMiddleware, // comment out before deploy to hide logging
+    //loggerMiddleware, // comment out before deploy to hide logging
     thunkMiddleware
     ),
     autoRehydrate()
