@@ -69,7 +69,7 @@ class Login extends Component {
 
   userLogin(payload) {
     if(payload){
-      console.log('payload:', payload);
+      //console.log('payload:', payload);
       this.props.dispatch(userLoginThunk(payload));
     }
   }
