@@ -36,12 +36,11 @@ function cardReducer(state = initialState, action){
     // Like / Admire artwork
     case LIKE_REQUEST:
       return Object.assign({}, state, {
-        isFetching: true,
       });
     case LIKE_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        data: action.data,
+        data: action.art,
         receivedAt: action.receivedAt
       });
     case LIKE_FAIL:

@@ -47,3 +47,43 @@ export function randomFail(response){
     errors: response.message
   }
 }
+
+// Like Thunk
+export function likeThunk(artId, userId){
+  return function(dispatch){
+    dispatch(likeRequest(artId, userId))
+    return Api.likeArt(artId, userId)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(likeSuccess(json))
+      })
+      .catch((err) => {
+        Promise.reject(err);
+        dispatch(likeFail(err))
+      });
+  }
+}
+
+export function likeRequest(artId, userId){
+  return {
+    type: LIKE_REQUEST,
+    artId,
+    userId,
+  }
+}
+
+export function likeSuccess(response){
+  return {
+    type: LIKE_SUCCESS,
+    response,
+    art: response.artwork
+  }
+}
+
+export function likeFail(response){
+  return {
+    type: LIKE_FAIL,
+    response,
+    errors: response.message
+  }
+}

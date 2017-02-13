@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { randomCardThunk } from '../cardFeed/cardActions';
+import { randomCardThunk, likeThunk } from '../cardFeed/cardActions';
 import CardWithAvatar from './Card';
 import Login from '../user/UserLogin';
 const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi."
@@ -8,13 +8,17 @@ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Do
 class Body extends Component {
   constructor(props) {
     super(props);
-  
     this.state = {};
     this.fetchRandomArt = this.fetchRandomArt.bind(this);
+    this.likeArtwork = this.likeArtwork.bind(this);
   }
 
   fetchRandomArt(){
     this.props.dispatch(randomCardThunk());
+  }
+
+  likeArtwork(){
+    this.props.dispatch(likeThunk(this.props.art._id, {user_id: this.props.user._id}))
   }
 
   componentMount(){
@@ -28,7 +32,7 @@ class Body extends Component {
     return this.props.isAuthenticated ? (
       <div className="container">
         <CardWithAvatar 
-          action1={() => console.log('Like Action!')}
+          action1={() => this.likeArtwork()}
           actionLabel1="Like"
           action2={() => this.fetchRandomArt()}
           actionLabel2="Random Image"

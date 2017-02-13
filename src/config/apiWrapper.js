@@ -43,6 +43,10 @@ const Api = {
   randomCard: () => {
     const url = host + '/artwork/randomized';
     return request(url, verbs.GET);
+  },
+  likeArt: (artId, userId) => {
+    const url = host + '/artwork/' + artId + '/yesVote';
+    return request(url, verbs.POST, userId)
   }
 }
 
