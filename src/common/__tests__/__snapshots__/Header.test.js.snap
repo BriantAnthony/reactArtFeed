@@ -110,7 +110,7 @@ exports[`test renders without crashing 1`] = `
         "whiteSpace": "nowrap",
       }
     }>
-    Mini Art Feed
+    Art Safari
   </h1>
   <div
     style={

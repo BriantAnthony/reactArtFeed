@@ -22,13 +22,15 @@ class Body extends Component {
   }
 
   componentDidMount(){
-    this.props.dispatch(randomCardThunk());
+    if(this.props.isAuthenticated){
+      this.props.dispatch(randomCardThunk());
+    }
   }
 
   render() {
     const props = this.props;
     //console.log('props: ', this.props);
-    const {art, user, isFetching} = props;
+    const {art, isFetching} = props;
     return this.props.isAuthenticated ? (
       <div className="container">
         <CardWithAvatar 

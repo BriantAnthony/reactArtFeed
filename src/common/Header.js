@@ -25,7 +25,7 @@ class Header extends Component {
     }
     return (
       <AppBar 
-        title="Mini Art Feed"
+        title="Art Safari"
         iconElementRight={<FlatButton label={authLabel()} />}
         onRightIconButtonTouchTap={this.handleTouchTap.bind(this)}
       />
